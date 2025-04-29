@@ -198,6 +198,7 @@ def main():
                 time.sleep(1)
                 return
         # if beam is not None:
+<<<<<<< HEAD
         for beam in beams:
             for j, bomb in enumerate(bombs):
                 if beam is not None:
@@ -215,6 +216,18 @@ def main():
 
         beams = [beam for beam in beams if beam is not None and check_bound(beam.rct) == (True, True)]
         bombs = [bomb for bomb in bombs if bomb is not None]
+=======
+        for j, bomb in enumerate(bombs):
+            if beam is not None:
+                if beam.rct.colliderect(bomb.rct):  # ビームと爆弾の衝突判定
+                    beam = None # ビームを消す
+                    bombs[j] = None # 爆弾を消す
+                    bird.change_img(6, screen)
+
+                    score.score += 1 #スコアを一転加算
+
+                bombs = [bomb for bomb in bombs if bomb is not None] # 撃ち落されてない爆弾だけのリストにする
+>>>>>>> score
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
