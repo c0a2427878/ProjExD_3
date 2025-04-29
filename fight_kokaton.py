@@ -150,8 +150,8 @@ class Score:
         """
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)  # 指定フォント
         self.color = (0, 0, 255)  # 青色
-        self.score = 0  # 初期スコア
-        self.img = self.fonto.render(f"Score: {self.score}", 0, self.color)
+        self.points = 0  # 初期スコア
+        self.img = self.fonto.render(f"Score: {self.points}", 0, self.color)
         self.rct = self.img.get_rect()
         self.rct.center = (100, HEIGHT-50)  # 左下付近に配置
 
@@ -159,7 +159,7 @@ class Score:
         """
         スコアを更新し、画面に表示する
         """
-        self.img = self.fonto.render(f"Score: {self.score}", 0, self.color)
+        self.img = self.fonto.render(f"Score: {self.points}", 0, self.color)
         screen.blit(self.img, self.rct)
 
 def main():
@@ -203,7 +203,7 @@ def main():
                     bombs[j] = None # 爆弾を消す
                     bird.change_img(6, screen)
 
-                    score.score += 1 #スコアを一転加算
+                    score.points += 1 #スコアを一転加算
 
                 bombs = [bomb for bomb in bombs if bomb is not None] # 撃ち落されてない爆弾だけのリストにする
 
